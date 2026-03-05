@@ -1,0 +1,123 @@
+#include <stdio.h>
+
+int main(){
+
+int populacao1 = 2430000;
+char Ceara1;
+char codigo1 [50];
+char brasil1 [50];
+char fortaleza1 [50];
+float pib1 = 86.9;
+int praiadofuturo1 = 0, arenacastelao1 = 2;
+float area1 = 313.8;
+
+int populacao2 = 2500000;
+char Bahia2 [50];
+char codigo2 [50];
+char brasil2 [50];
+char salvador2 [50];
+float area2 = 693.8;
+float pib2 = 31.7;
+int Pelourinho2 = 0, ElevadorLacerda = 1, fontenova2 = 2;
+
+printf("Cadastro da carta 1:   \n");
+
+printf ("estado A a z:");
+scanf("%c", &Ceara1);
+
+printf ("codigo1");
+scanf ("%s", &codigo1);
+
+printf ("Nome do pais:");
+scanf ("(%c)", &brasil1);
+
+printf ("populacao:");
+scanf ("%d", &populacao1 );
+
+printf ("area (km2):");
+scanf ("%f", &area1);
+
+printf ("pib (em bilhoes):");
+scanf ("%f", &pib1);
+
+printf ("numero de pontos turiscos:");
+scanf ("%d", &praiadofuturo1, arenacastelao1);
+scanf ("%d", &arenacastelao1);
+
+printf("Cadastro da carta 2:   \n");
+
+printf ("estado A a z:");
+scanf("%c", &Bahia2);
+
+printf ("codigo2");
+scanf ("%s", &codigo2);
+
+printf ("Nome do pais:");
+scanf ("(%c)", &brasil2);
+
+printf ("populacao:");
+scanf ("%d", &populacao2);
+
+printf ("area (km2):");
+scanf ("%f", &area2);
+
+printf ("pib (em bilhoes):");
+scanf ("%d", &pib2);
+
+printf ("numero de pontos turiscos:");
+scanf ("%d", &Pelourinho2);
+scanf ("%d", &ElevadorLacerda);
+scanf ("%d", &fontenova2);
+
+printf ("Dados das cartas    \n");
+
+printf ("carta 1:  \n");
+printf ("estado: %c, estado 1     \n");
+printf ("codigo: %s, codigo1    \n");
+printf ("nome da capital: %s, nomecapital1    \n");
+printf ("populacao: %d, populacao1    \n");
+printf ("area: %.2f km2, area1    \n");
+printf ("pib: %2f bilhoes de reais, pib1   \n");
+printf ("numero de pontos turiscos: %d, pontosturiscos1   \n");
+
+printf ("carta 2:  \n");
+printf ("estado: %c, estado 2     \n");
+printf ("codigo: %s, codigo2    \n");
+printf ("nome da capital: %s, nomecapital2    \n");
+printf ("populacao: %d, populacao2    \n");
+printf ("area: %.2f km2, area2    \n");
+printf ("pib: %2f bilhoes de reais, pib2   \n");
+printf ("numero de pontos turiscos: %d, pontosturiscos2   \n");
+
+printf("Resultado Final: \n");
+
+int pontosCarta1 = 0;
+int pontosCarta2 = 0; 
+
+if (populacao1 > populacao2)
+     pontosCarta1++;
+     else if (populacao2 > populacao1)
+        pontosCarta2++;
+
+if (area1 > area2)
+    pontosCarta1++;
+    else if (area2 > area1)
+    pontosCarta2++;
+
+    if (pib1 > pib2)
+     pontosCarta1++;
+     else if (pib2 > pib1)
+    pontosCarta2++;
+    
+    int total1 = praiadofuturo1 + arenacastelao1;
+    int total2 = Pelourinho2 + ElevadorLacerda + fontenova2;
+    
+    if (pontosCarta1 > pontosCarta2)
+        printf("Carta 1 é a vencedora! \n");
+        else if (pontosCarta2 > pontosCarta1)
+        printf("Carta 2 é a vencedora! \n");
+            else
+            printf("Empate! \n");
+            
+            return 0;
+            }
