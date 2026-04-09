@@ -1,0 +1,151 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Função para calcular densidade
+float densidade(int populacao, float area) {
+    return area > 0 ? (float)populacao / area : 0;
+}
+
+int main() {
+
+    // ===== CARTA 1 =====
+    char pais1[50] = "Ceara";
+    int populacao1 = 2430000;
+    float area1 = 313.8;
+    float pib1 = 86.9;
+    int pontos1 = 2;
+
+    // ===== CARTA 2 =====
+    char pais2[50] = "Bahia";
+    int populacao2 = 2500000;
+    float area2 = 693.8;
+    float pib2 = 31.7;
+    int pontos2 = 3;
+
+    int escolha1, escolha2;
+
+    // ===== MENU PRIMEIRO ATRIBUTO =====
+    printf("Escolha o PRIMEIRO atributo:\n");
+    printf("1. Populacao\n");
+    printf("2. Area\n");
+    printf("3. PIB\n");
+    printf("4. Pontos Turisticos\n");
+    printf("5. Densidade Demografica\n");
+    scanf("%d", &escolha1);
+
+    // ===== MENU SEGUNDO ATRIBUTO DINÂMICO =====
+    printf("\nEscolha o SEGUNDO atributo:\n");
+
+    for(int i = 1; i <= 5; i++) {
+        if(i != escolha1) {
+            switch(i) {
+                case 1: printf("1. Populacao\n"); break;
+                case 2: printf("2. Area\n"); break;
+                case 3: printf("3. PIB\n"); break;
+                case 4: printf("4. Pontos Turisticos\n"); break;
+                case 5: printf("5. Densidade Demografica\n"); break;
+            }
+        }
+    }
+
+    scanf("%d", &escolha2);
+
+    // ===== VALORES =====
+    float valor1_c1, valor1_c2;
+    float valor2_c1, valor2_c2;
+
+    // ===== SWITCH ATRIBUTO 1 =====
+    switch(escolha1) {
+        case 1:
+            valor1_c1 = populacao1;
+            valor1_c2 = populacao2;
+            break;
+        case 2:
+            valor1_c1 = area1;
+            valor1_c2 = area2;
+            break;
+        case 3:
+            valor1_c1 = pib1;
+            valor1_c2 = pib2;
+            break;
+        case 4:
+            valor1_c1 = pontos1;
+            valor1_c2 = pontos2;
+            break;
+        case 5:
+            valor1_c1 = densidade(populacao1, area1);
+            valor1_c2 = densidade(populacao2, area2);
+            break;
+        default:
+            printf("Opcao invalida!\n");
+            return 0;
+    }
+
+    // ===== SWITCH ATRIBUTO 2 =====
+    switch(escolha2) {
+        case 1:
+            valor2_c1 = populacao1;
+            valor2_c2 = populacao2;
+            break;
+        case 2:
+            valor2_c1 = area1;
+            valor2_c2 = area2;
+            break;
+        case 3:
+            valor2_c1 = pib1;
+            valor2_c2 = pib2;
+            break;
+        case 4:
+            valor2_c1 = pontos1;
+            valor2_c2 = pontos2;
+            break;
+        case 5:
+            valor2_c1 = densidade(populacao1, area1);
+            valor2_c2 = densidade(populacao2, area2);
+            break;
+        default:
+            printf("Opcao invalida!\n");
+            return 0;
+    }
+
+    // ===== COMPARAÇÃO =====
+
+    int pontosCarta1 = 0;
+    int pontosCarta2 = 0;
+
+    // Regra especial densidade
+    if (escolha1 == 5) {
+        pontosCarta1 += (valor1_c1 < valor1_c2) ? 1 : 0;
+        pontosCarta2 += (valor1_c2 < valor1_c1) ? 1 : 0;
+    } else {
+        pontosCarta1 += (valor1_c1 > valor1_c2) ? 1 : 0;
+        pontosCarta2 += (valor1_c2 > valor1_c1) ? 1 : 0;
+    }
+
+    if (escolha2 == 5) {
+        pontosCarta1 += (valor2_c1 < valor2_c2) ? 1 : 0;
+        pontosCarta2 += (valor2_c2 < valor2_c1) ? 1 : 0;
+    } else {
+        pontosCarta1 += (valor2_c1 > valor2_c2) ? 1 : 0;
+        pontosCarta2 += (valor2_c2 > valor2_c1) ? 1 : 0;
+    }
+
+    // ===== SOMA =====
+    float soma1 = valor1_c1 + valor2_c1;
+    float soma2 = valor1_c2 + valor2_c2;
+
+    // ===== RESULTADO =====
+    printf("\n===== RESULTADO =====\n");
+
+    printf("%s: %.2f + %.2f = %.2f\n", pais1, valor1_c1, valor2_c1, soma1);
+    printf("%s: %.2f + %.2f = %.2f\n", pais2, valor1_c2, valor2_c2, soma2);
+
+    if (soma1 > soma2)
+        printf("Vencedor: %s\n", pais1);
+    else if (soma2 > soma1)
+        printf("Vencedor: %s\n", pais2);
+    else
+        printf("Empate!\n");
+
+    return 0;
+}
